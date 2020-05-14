@@ -8,13 +8,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Icon from '@material-ui/core/Icon';
 
 import {CTX} from './Store';
 
 const useStyles = makeStyles(theme => ({
   // makestyles render css when page renders
   root: {
-
     // separation
     margin: '30px',
     padding: theme.spacing(3,2),
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     width: '30%',
     height: '300px',
     borderRight: '2.5px solid black',
-    background: 'grey'
+    background: '#EAEAEA'
   },
   chatWindow:{
     width: '70%',
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     padding: '20px'
   },
   chatBox:{
-    width: '85%'
+    width: '85%',
   },
   button:{
     width: '15%'
@@ -97,16 +97,19 @@ export default function Dashboard() {
 
         <div className = {classes.flex}>
         <TextField
-          id="outlined-basic"
+          id="standard-basic"
           label="Type Here.."
-          variant="outlined"
+
           className={classes.chatBox}
           value = {textValue}
           onChange = {(e) => changeTextValue(e.target.value)}
         />
         <Button
         variant="contained"
-        color="primary"
+        color="secondary"
+        disableElevation
+        className={classes.button}
+        // endIcon={<Icon>send</Icon>}
         onClick = {() => {
           sendChatAction({from: user,msg: textValue, topic: activeTopic});
           changeTextValue(' ');

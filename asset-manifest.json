@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ShlackChat/static/css/main.eab24d3c.chunk.css",
+    "main.js": "/ShlackChat/static/js/main.01e2adbe.chunk.js",
+    "main.js.map": "/ShlackChat/static/js/main.01e2adbe.chunk.js.map",
+    "runtime-main.js": "/ShlackChat/static/js/runtime-main.a9afac1c.js",
+    "runtime-main.js.map": "/ShlackChat/static/js/runtime-main.a9afac1c.js.map",
+    "static/js/2.469f687e.chunk.js": "/ShlackChat/static/js/2.469f687e.chunk.js",
+    "static/js/2.469f687e.chunk.js.map": "/ShlackChat/static/js/2.469f687e.chunk.js.map",
+    "index.html": "/ShlackChat/index.html",
+    "precache-manifest.3eacc69d74e141bf5fb6d8b74d9c3d01.js": "/ShlackChat/precache-manifest.3eacc69d74e141bf5fb6d8b74d9c3d01.js",
+    "service-worker.js": "/ShlackChat/service-worker.js",
+    "static/css/main.eab24d3c.chunk.css.map": "/ShlackChat/static/css/main.eab24d3c.chunk.css.map",
+    "static/js/2.469f687e.chunk.js.LICENSE.txt": "/ShlackChat/static/js/2.469f687e.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/ShlackChat/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9afac1c.js",
+    "static/js/2.469f687e.chunk.js",
+    "static/css/main.eab24d3c.chunk.css",
+    "static/js/main.01e2adbe.chunk.js"
+  ]
+}

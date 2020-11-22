@@ -32,8 +32,6 @@ if (!firebase.apps.length) {
     appId: "1:463084450667:web:1889f3ad8955d2b9f4d22e",
     measurementId: "G-RZZ8F0F5PJ"
   })
-}else {
-  firebase.app(); // if already initialized, use that one
 }
 
 
@@ -45,10 +43,7 @@ function App() {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
-
+      
       <section>
         {user ? <ChatRoom /> : <SignIn />}
       </section>
@@ -80,18 +75,31 @@ function SignOut(){
 function ChatRoom() {
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
-  const [messages] = useCollectionData(query, {idField: 'id'});
+
+  const [messages] = useCollectionData(query, { idField: 'id' });
   return(
-    <div>
-      {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-    </div>
-  
+    <>   
+      <div>
+        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+      </div>
+      <form>
+          
+      </form>
+    </>
   )
 }
 
 function ChatMessage(props){
-  const {text, uid} = props.message;
-  return <p>{text}</p>
+  const {text, userId, photoURL} = props.message;
+
+  const messageClass = userId === auth.currentUser.uid ? 'Message Sent': 'Message Received';
+
+  return(
+    <div className={`message ${messageClass}`}>
+      <img src={photoURL}/>
+      <p>{text}</p>
+    </div>
+  )
 }
 
 export default App;

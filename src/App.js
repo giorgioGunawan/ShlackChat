@@ -77,13 +77,35 @@ function ChatRoom() {
   const query = messagesRef.orderBy('createdAt').limit(25);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
+
+  const [formValue, setFormValue] = useState('');
+  // bind state to form input in the form 
+  // when user submits the text (submits the form), 
+  // we listen to the onsubmitform event on the form 
+  // and trigger a function sending an event
+  const sendMessage = async(e) =>{
+    e.preventDefault();
+    const {uid, photoURL} = auth.currentUser;
+    // create new document to nosql database
+    await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL
+    });
+
+    // set the form value to empty again to await for next event
+    setFormValue('');
+  }
   return(
     <>   
       <div>
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
       </div>
       <form>
-          
+
+          <input value={formValue} onChange={e => setFormValue(e.target.value)} />
+          <button type="submit">submit</button>
       </form>
     </>
   )

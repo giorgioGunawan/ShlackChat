@@ -12,16 +12,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 
 // from firebase - project settings adding webapp
-/*
-var firebaseConfig = {
-  apiKey: "AIzaSyBS7RMnNi3XEIDvMxGjhb1a7VIEQqO_Ufw",
-  authDomain: "giochat-160b7.firebaseapp.com",
-  projectId: "giochat-160b7",
-  storageBucket: "giochat-160b7.appspot.com",
-  messagingSenderId: "463084450667",
-  appId: "1:463084450667:web:1889f3ad8955d2b9f4d22e",
-  measurementId: "G-RZZ8F0F5PJ"
-};*/
+// firebase console - giochat (not giochat2)
 if (!firebase.apps.length) {
   firebase.initializeApp({
     apiKey: "AIzaSyBS7RMnNi3XEIDvMxGjhb1a7VIEQqO_Ufw",

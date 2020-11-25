@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -102,9 +102,9 @@ function ChatRoom() {
       <div>
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
       </div>
-      <form>
+      <form onSubmit={sendMessage}>
 
-          <input value={formValue} onChange={e => setFormValue(e.target.value)} />
+          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
           <button type="submit">submit</button>
       </form>
     </>

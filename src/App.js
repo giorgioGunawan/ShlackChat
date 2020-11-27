@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -13,17 +13,17 @@ import {useCollectionData} from 'react-firebase-hooks/firestore';
 
 // from firebase - project settings adding webapp
 // firebase console - giochat (not giochat2)
-if (!firebase.apps.length) {
-  firebase.initializeApp({
-    apiKey: "AIzaSyBS7RMnNi3XEIDvMxGjhb1a7VIEQqO_Ufw",
-    authDomain: "giochat-160b7.firebaseapp.com",
-    projectId: "giochat-160b7",
-    storageBucket: "giochat-160b7.appspot.com",
-    messagingSenderId: "463084450667",
-    appId: "1:463084450667:web:1889f3ad8955d2b9f4d22e",
-    measurementId: "G-RZZ8F0F5PJ"
-  })
-}
+
+firebase.initializeApp({
+  apiKey: "AIzaSyBS7RMnNi3XEIDvMxGjhb1a7VIEQqO_Ufw",
+  authDomain: "giochat-160b7.firebaseapp.com",
+  projectId: "giochat-160b7",
+  storageBucket: "giochat-160b7.appspot.com",
+  messagingSenderId: "463084450667",
+  appId: "1:463084450667:web:1889f3ad8955d2b9f4d22e",
+  measurementId: "G-RZZ8F0F5PJ"
+})
+
 
 
 const auth = firebase.auth();
@@ -34,7 +34,9 @@ function App() {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
-      
+      <header>
+        giochat
+      </header>
       <section>
         {user ? <ChatRoom /> : <SignIn />}
       </section>
@@ -66,6 +68,7 @@ function SignOut(){
 function ChatRoom() {
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
+  const scrollDown = useRef();
 
   const [messages] = useCollectionData(query, { idField: 'id' });
 
@@ -87,29 +90,36 @@ function ChatRoom() {
 
     // set the form value to empty again to await for next event
     setFormValue('');
+
+    scrollDown.current.scrollIntoView();
   }
   return(
     <>   
-      <div>
+      <main>
+
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-      </div>
+        <div ref={scrollDown}>
+
+        </div>
+      </main>
+      
       <form onSubmit={sendMessage}>
 
           <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-          <button type="submit">submit</button>
+          <button type="submit">>Submit</button>
       </form>
     </>
   )
 }
 
 function ChatMessage(props){
-  const {text, userId, photoURL} = props.message;
-
-  const messageClass = userId === auth.currentUser.uid ? 'Message Sent': 'Message Received';
-
+  const {text, uid, photoURL} = props.message;
+  const messageClass = uid === auth.currentUser.uid ? 'sent': 'received';
+  console.log(uid)
+  console.log(auth.currentUser.uid === uid)
   return(
     <div className={`message ${messageClass}`}>
-      <img src={photoURL}/>
+      <img src={photoURL || 'https://media.timeout.com/images/103491793/750/422/image.jpg'}/>
       <p>{text}</p>
     </div>
   )

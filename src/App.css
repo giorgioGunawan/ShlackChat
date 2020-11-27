@@ -1,10 +1,10 @@
 body {
-  background-color: #282c34;
+  background-color: rgb(0, 0, 0);
 }
 
 .App {
   text-align: center;
-  max-width: 728px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -15,7 +15,7 @@ body {
   color: white;
   position: fixed;
   width: 100%;
-  max-width: 728px;
+  max-width: 700px;
   top: 0;
   display: flex;
   align-items: center;
@@ -30,11 +30,11 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(40, 37, 53);
+  background-color: rgb(24, 41, 27);
 }
 
 main {
-  padding: 10px;
+  padding: 20px;
   height: 80vh;
   margin: 10vh 0 10vh;
   overflow-y: scroll;
@@ -47,27 +47,27 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-track {
-  background: #1e1e24;
+  background: rgb(102, 102, 102);
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: rgb(0, 0, 0);
 }
 
 form {
   height: 10vh;
   position: fixed;
   bottom: 0;
-  background-color: rgb(24, 23, 23);
+  background-color: rgb(204, 199, 199);
   width: 100%;
-  max-width: 728px;
+  max-width: 700px;
   display: flex;
   font-size: 1.5rem;
 }
 
 form button {
-  width: 20%;
-  background-color: rgb(56, 56, 143);
+  width: 40%;
+  background-color: rgb(201, 96, 82);
 }
 
 
@@ -83,15 +83,15 @@ input {
 }
 
 button {
-  background-color: #282c34; /* Green */
+  background-color: #282c34;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 button:disabled {
@@ -118,7 +118,7 @@ ul, li {
 p {
   max-width: 500px;
   margin-bottom: 12px;
-  line-height: 24px;
+  line-height: 20px;
   padding: 10px 20px;
   border-radius: 25px;
   position: relative;

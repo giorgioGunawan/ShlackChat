@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -57,13 +57,14 @@ function SignIn() {
   )
 }
 
+/*
 function SignOut(){
   // if there is a user, use the firebase auth library sign out function
   // on sign out button event
   if (auth.currentUser){
     return (<button onClick={() => auth.signOut()}>Sign Out</button>)
   }
-}
+}*/
 
 function ChatRoom() {
   const messagesRef = firestore.collection('messages');
@@ -119,7 +120,7 @@ function ChatMessage(props){
   console.log(auth.currentUser.uid === uid)
   return(
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://media.timeout.com/images/103491793/750/422/image.jpg'}/>
+      <img alt={} src={photoURL || 'https://media.timeout.com/images/103491793/750/422/image.jpg'}/>
       <p>{text}</p>
     </div>
   )

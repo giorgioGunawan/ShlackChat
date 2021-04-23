@@ -35,7 +35,8 @@ function App() {
   return (
     <div className="App">
       <header>
-        giochat
+        <h2>giochat - google auth based chat</h2>
+        <SignOut/>
       </header>
       <section>
         {user ? <ChatRoom /> : <SignIn />}
@@ -57,14 +58,15 @@ function SignIn() {
   )
 }
 
-/*
+
 function SignOut(){
   // if there is a user, use the firebase auth library sign out function
   // on sign out button event
   if (auth.currentUser){
     return (<button onClick={() => auth.signOut()}>Sign Out</button>)
   }
-}*/
+  return null
+}
 
 function ChatRoom() {
   const messagesRef = firestore.collection('messages');
@@ -107,7 +109,7 @@ function ChatRoom() {
       <form onSubmit={sendMessage}>
 
           <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
-          <button type="submit">>Submit</button>
+          <button type="submit">Submit</button>
       </form>
     </>
   )
@@ -120,7 +122,7 @@ function ChatMessage(props){
   console.log(auth.currentUser.uid === uid)
   return(
     <div className={`message ${messageClass}`}>
-      <img alt={} src={photoURL || 'https://media.timeout.com/images/103491793/750/422/image.jpg'}/>
+      <img src={photoURL || 'https://media.timeout.com/images/103491793/750/422/image.jpg'}/>
       <p>{text}</p>
     </div>
   )
